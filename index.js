@@ -25,14 +25,14 @@ app.post("/send_email", function(req, res) {
     var transporter = nodemailer.createTransport ({
         service: 'gmail',
         auth: {
-            user: sabrina.tj.a.06@gmail.com,
-            pass: uixykfcrykwvwqpb,
+            user: "sabrina.tj.a.06@gmail.com",
+            pass: "uixykfcrykwvwqpb",
         }
     });
 
     var mailOptions = {
         from: from, 
-        to: sabrina.tj.a.06@gmail.com, 
+        to: "sabrina.tj.a.06@gmail.com", 
         subject: subject, 
         text: message
     }
@@ -40,9 +40,10 @@ app.post("/send_email", function(req, res) {
     transporter.sendMail(mailOptions, function(error, info) {
         if (error) {
             console.log(error)
+            res.redirect("/?success=false"); // Redirect with failure indicator
         } else {
             console.log("Email Send: " + info.response)
-            res.send("Email sent successfully, I'll get back to you soon. Please refresh if you would like to submit another message.");
+            res.redirect("/?success=true"); // Redirect with success indicator
         }
     })
 })
