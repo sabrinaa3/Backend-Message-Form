@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, "page")));
 
 // Routing 
 app.get("/", function(req, response) {
-    response.sendFile(path.join(__dirname, "index.html"));
+    response.sendFile(path.join(__dirname, "page", "index.html"));
 })
 
 app.post("/send_email", function(req, res) {
